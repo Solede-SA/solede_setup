@@ -152,6 +152,7 @@ setup_wizard_complete = "solede_setup.setup.intercept.post_wizard_cleanup"
 override_doctype_class = {
     "Company": "solede_setup.overrides.company.CustomCompany",
     "Cost Center": "solede_setup.overrides.cost_center.CustomCostCenter",
+    "Warehouse": "solede_setup.overrides.warehouse.CustomWarehouse",
 }
 
 # Fixtures

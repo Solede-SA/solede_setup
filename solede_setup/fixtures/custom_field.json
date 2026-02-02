@@ -11,5 +11,18 @@
 		"no_copy": 1,
 		"in_list_view": 1,
 		"in_standard_filter": 1
+	},
+	{
+		"name": "Warehouse-custom_id",
+		"doctype": "Custom Field",
+		"module": "Solede Setup",
+		"dt": "Warehouse",
+		"fieldname": "custom_id",
+		"fieldtype": "Data",
+		"label": "ID",
+		"insert_after": "warehouse_name",
+		"no_copy": 1,
+		"in_list_view": 1,
+		"in_standard_filter": 1
 	}
 ]

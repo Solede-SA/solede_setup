@@ -1,12 +1,12 @@
 """
-Override Cost Center per supportare custom_id come nome documento.
+Override Warehouse per supportare custom_id come nome documento.
 """
 
 import frappe
-from erpnext.accounts.doctype.cost_center.cost_center import CostCenter
+from erpnext.stock.doctype.warehouse.warehouse import Warehouse
 
 
-class CustomCostCenter(CostCenter):
+class CustomWarehouse(Warehouse):
     def autoname(self):
         """Se custom_id è valorizzato, usa quello + abbreviazione company."""
         if self.get("custom_id") and self.get("company"):

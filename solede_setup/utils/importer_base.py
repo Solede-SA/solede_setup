@@ -456,11 +456,6 @@ def create_nested_set_items(doctype: str, forest: dict, company: str = None,
     if not doctype_name_field:
         doctype_name_field = frappe.scrub(doctype) + "_name"
 
-    # Ottieni abbreviazione company se fornita
-    company_abbr = None
-    if company:
-        company_abbr = frappe.get_cached_value("Company", company, "abbr")
-
     for key, value in forest.items():
         is_group = value.get("is_group", 0)
         item_name = value.get(name_field, key)
@@ -472,8 +467,6 @@ def create_nested_set_items(doctype: str, forest: dict, company: str = None,
 
         if company:
             doc.company = company
-            # Forza il nome con abbreviazione company (es. "ADMIN001 - TC")
-            doc.name = f"{custom_id} - {company_abbr}"
 
         doc.is_group = is_group
 
