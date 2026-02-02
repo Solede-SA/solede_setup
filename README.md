@@ -141,32 +141,28 @@ bench --site your-site.local install-app solede_setup
 bench --site your-site.local migrate
 ```
 
-#### Step 2: Create and Activate a Setup Profile
+#### Step 2: Activate a Setup Profile
 
-Before completing the setup wizard, create a Setup Profile:
-
-1. Log into the site (the setup wizard will appear)
-2. Open a new tab and navigate to: `/app/setup-profile/new-setup-profile-1`
-3. Or use bench console:
+The app comes with pre-configured profiles. List available profiles and activate one:
 
 ```bash
-bench --site your-site.local console
+# List all available profiles
+bench --site your-site.local list-setup-profiles
+
+# Show details of a specific profile
+bench --site your-site.local show-setup-profile "CH Clean Start"
+
+# Activate a profile
+bench --site your-site.local set-setup-profile "CH Clean Start"
 ```
 
-```python
-profile = frappe.new_doc("Setup Profile")
-profile.profile_name = "Custom Setup"
-profile.is_active = 1
-profile.skip_default_item_groups = 1
-profile.skip_default_territories = 1
-profile.skip_default_customer_groups = 1
-profile.skip_default_supplier_groups = 1
-profile.skip_default_mode_of_payment = 1
-profile.skip_default_tax_templates = 1
-profile.skip_default_payment_terms = 1
-profile.insert()
-frappe.db.commit()
-```
+**Pre-configured profiles:**
+
+| Profile | Description |
+|---------|-------------|
+| `CH Clean Start` | Swiss profile: removes all ERPNext defaults for a clean start |
+| `IT Clean Start` | Italian profile: removes defaults but keeps country fixtures for e-invoicing |
+| `Keep All Defaults` | Keeps all ERPNext default data (no cleanup) |
 
 #### Step 3: Complete the Setup Wizard
 
