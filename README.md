@@ -30,6 +30,17 @@ Import non-hierarchical master data:
 - **Template download** - Download CSV/Excel templates with sample data
 - **Validation** - Validates file structure and parent references before import
 
+### Setup Wizard Integration
+
+Solede Setup can intercept and control ERPNext's setup wizard to skip default data creation, allowing you to import your own master data instead.
+
+**Setup Profile** allows you to:
+- Skip creation of default Item Groups, Territories, Customer Groups, etc.
+- Skip default Tax Templates, Payment Terms, and Modes of Payment
+- Skip country-specific fixtures
+- Track all documents created during setup
+- Clean up unwanted default data after setup
+
 ## Installation
 
 ### Prerequisites
@@ -109,6 +120,80 @@ bench --site your-site.local clear-cache
    - **Item Taxes** - For Item Tax Template
 4. Fill in each sheet as needed
 5. Upload and import
+
+### Using Setup Profile with Setup Wizard
+
+If you want to prevent ERPNext from creating default master data during the initial setup wizard, configure a Setup Profile **before** running the wizard.
+
+#### Step 1: Install the App (Before Running Setup Wizard)
+
+If setting up a new site, install the app before completing the setup wizard:
+
+```bash
+# Create new site
+bench new-site your-site.local
+
+# Install ERPNext
+bench --site your-site.local install-app erpnext
+
+# Install Solede Setup BEFORE completing the wizard
+bench --site your-site.local install-app solede_setup
+bench --site your-site.local migrate
+```
+
+#### Step 2: Create and Activate a Setup Profile
+
+Before completing the setup wizard, create a Setup Profile:
+
+1. Log into the site (the setup wizard will appear)
+2. Open a new tab and navigate to: `/app/setup-profile/new-setup-profile-1`
+3. Or use bench console:
+
+```bash
+bench --site your-site.local console
+```
+
+```python
+profile = frappe.new_doc("Setup Profile")
+profile.profile_name = "Custom Setup"
+profile.is_active = 1
+profile.skip_default_item_groups = 1
+profile.skip_default_territories = 1
+profile.skip_default_customer_groups = 1
+profile.skip_default_supplier_groups = 1
+profile.skip_default_mode_of_payment = 1
+profile.skip_default_tax_templates = 1
+profile.skip_default_payment_terms = 1
+profile.insert()
+frappe.db.commit()
+```
+
+#### Step 3: Complete the Setup Wizard
+
+Return to the setup wizard tab. You'll see a banner indicating the active Setup Profile. Complete the wizard normally - the app will skip creating the default data you configured.
+
+#### Step 4: Import Your Custom Data
+
+After the wizard completes:
+1. Navigate to the **Solede Setup** workspace
+2. Use the importers to load your custom master data
+3. View **Setup Log** to see what was created during setup
+
+#### Setup Profile Options
+
+| Option | Description |
+|--------|-------------|
+| `skip_default_item_groups` | Don't create default Item Groups (All Item Groups, Products, etc.) |
+| `skip_default_territories` | Don't create default Territories (All Territories, etc.) |
+| `skip_default_customer_groups` | Don't create default Customer Groups |
+| `skip_default_supplier_groups` | Don't create default Supplier Groups |
+| `skip_default_mode_of_payment` | Don't create default Modes of Payment (Cash, Bank Transfer, etc.) |
+| `skip_default_tax_templates` | Don't create default Tax Templates |
+| `skip_default_payment_terms` | Don't create default Payment Terms |
+| `skip_default_stock_entry_types` | Don't create default Stock Entry Types |
+| `skip_default_price_lists` | Don't create default Price Lists |
+| `skip_default_uom` | Don't create default Units of Measure |
+| `skip_country_fixtures` | Don't create country-specific default data |
 
 ## Template Formats
 
