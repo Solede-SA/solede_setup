@@ -1,0 +1,228 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:profile_name",
+ "creation": "2024-01-30 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "profile_name",
+  "description",
+  "is_active",
+  "section_skip_defaults",
+  "skip_default_item_groups",
+  "skip_default_territories",
+  "skip_default_customer_groups",
+  "skip_default_supplier_groups",
+  "column_break_skip_1",
+  "skip_default_mode_of_payment",
+  "skip_default_stock_entry_types",
+  "skip_default_price_lists",
+  "skip_default_uom",
+  "skip_default_warehouses",
+  "section_skip_accounting",
+  "skip_default_tax_templates",
+  "skip_default_payment_terms",
+  "column_break_skip_2",
+  "skip_country_fixtures",
+  "section_post_cleanup",
+  "delete_demo_data",
+  "delete_sample_company",
+  "section_cleanup_actions",
+  "cleanup_company",
+  "column_break_cleanup",
+  "cleanup_all"
+ ],
+ "fields": [
+  {
+   "fieldname": "profile_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Profile Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Active"
+  },
+  {
+   "fieldname": "section_skip_defaults",
+   "fieldtype": "Section Break",
+   "label": "Skip Default Data"
+  },
+  {
+   "default": "0",
+   "description": "Non creare Item Groups default (Products, Raw Material, Services, etc.)",
+   "fieldname": "skip_default_item_groups",
+   "fieldtype": "Check",
+   "label": "Skip Default Item Groups"
+  },
+  {
+   "default": "0",
+   "description": "Non creare Territories default (All Territories, Rest Of The World)",
+   "fieldname": "skip_default_territories",
+   "fieldtype": "Check",
+   "label": "Skip Default Territories"
+  },
+  {
+   "default": "0",
+   "description": "Non creare Customer Groups default (Individual, Commercial, etc.)",
+   "fieldname": "skip_default_customer_groups",
+   "fieldtype": "Check",
+   "label": "Skip Default Customer Groups"
+  },
+  {
+   "default": "0",
+   "description": "Non creare Supplier Groups default (Services, Local, etc.)",
+   "fieldname": "skip_default_supplier_groups",
+   "fieldtype": "Check",
+   "label": "Skip Default Supplier Groups"
+  },
+  {
+   "fieldname": "column_break_skip_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Non creare Mode of Payment default (Cash, Credit Card, etc.)",
+   "fieldname": "skip_default_mode_of_payment",
+   "fieldtype": "Check",
+   "label": "Skip Default Mode of Payment"
+  },
+  {
+   "default": "0",
+   "description": "Non creare Stock Entry Types default (Material Issue, Receipt, etc.)",
+   "fieldname": "skip_default_stock_entry_types",
+   "fieldtype": "Check",
+   "label": "Skip Default Stock Entry Types"
+  },
+  {
+   "default": "0",
+   "description": "Non creare Price Lists default (Standard Buying/Selling)",
+   "fieldname": "skip_default_price_lists",
+   "fieldtype": "Check",
+   "label": "Skip Default Price Lists"
+  },
+  {
+   "default": "0",
+   "description": "Non importare UOM default",
+   "fieldname": "skip_default_uom",
+   "fieldtype": "Check",
+   "label": "Skip Default UOM"
+  },
+  {
+   "default": "0",
+   "description": "Elimina Warehouse default (Stores, Work In Progress, Finished Goods, Goods In Transit)",
+   "fieldname": "skip_default_warehouses",
+   "fieldtype": "Check",
+   "label": "Skip Default Warehouses"
+  },
+  {
+   "fieldname": "section_skip_accounting",
+   "fieldtype": "Section Break",
+   "label": "Skip Accounting Defaults"
+  },
+  {
+   "default": "0",
+   "description": "Non creare Tax Templates default da country_wise_tax.json",
+   "fieldname": "skip_default_tax_templates",
+   "fieldtype": "Check",
+   "label": "Skip Default Tax Templates"
+  },
+  {
+   "default": "0",
+   "description": "Non creare Payment Terms default",
+   "fieldname": "skip_default_payment_terms",
+   "fieldtype": "Check",
+   "label": "Skip Default Payment Terms"
+  },
+  {
+   "fieldname": "column_break_skip_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Non installare country fixtures (custom fields per paese)",
+   "fieldname": "skip_country_fixtures",
+   "fieldtype": "Check",
+   "label": "Skip Country Fixtures"
+  },
+  {
+   "fieldname": "section_post_cleanup",
+   "fieldtype": "Section Break",
+   "label": "Post-Setup Cleanup"
+  },
+  {
+   "default": "0",
+   "description": "Elimina dati demo dopo il setup",
+   "fieldname": "delete_demo_data",
+   "fieldtype": "Check",
+   "label": "Delete Demo Data"
+  },
+  {
+   "default": "0",
+   "description": "Elimina company di esempio se presente",
+   "fieldname": "delete_sample_company",
+   "fieldtype": "Check",
+   "label": "Delete Sample Company"
+  },
+  {
+   "fieldname": "section_cleanup_actions",
+   "fieldtype": "Section Break",
+   "label": "Cleanup Actions"
+  },
+  {
+   "description": "Seleziona la Company per il cleanup",
+   "fieldname": "cleanup_company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "column_break_cleanup",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Elimina tutti i dati master (Cost Center, Warehouse, Item Group, etc.) e le GL Entry per la company selezionata",
+   "fieldname": "cleanup_all",
+   "fieldtype": "Button",
+   "label": "Cleanup All Data"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "issingle": 0,
+ "links": [],
+ "modified": "2024-01-30 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Solede Setup",
+ "name": "Setup Profile",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

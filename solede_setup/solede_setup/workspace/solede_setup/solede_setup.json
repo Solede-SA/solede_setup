@@ -1,0 +1,105 @@
+{
+ "charts": [],
+ "content": "[{\"id\": \"header_main\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Solede Setup</b></span>\", \"col\": 12}}, {\"id\": \"header_tree\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h5\\\"><b>Tree Importers</b></span>\", \"col\": 12}}, {\"id\": \"shortcut_cc\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Cost Center Importer\", \"col\": 4}}, {\"id\": \"shortcut_ig\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Item Group Importer\", \"col\": 4}}, {\"id\": \"shortcut_wh\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Warehouse Importer\", \"col\": 4}}, {\"id\": \"shortcut_ter\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Territory Importer\", \"col\": 4}}, {\"id\": \"shortcut_cg\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Customer Group Importer\", \"col\": 4}}, {\"id\": \"shortcut_sg\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Supplier Group Importer\", \"col\": 4}}, {\"id\": \"shortcut_coa\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Chart of Accounts Importer\", \"col\": 4}}, {\"id\": \"header_list\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h5\\\"><b>List Importers</b></span>\", \"col\": 12}}, {\"id\": \"shortcut_mop\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Mode of Payment Importer\", \"col\": 4}}, {\"id\": \"shortcut_pt\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Payment Terms Importer\", \"col\": 4}}, {\"id\": \"shortcut_tt\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Tax Template Importer\", \"col\": 4}}, {\"id\": \"header_config\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h5\\\"><b>Configuration</b></span>\", \"col\": 12}}, {\"id\": \"shortcut_profile\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Setup Profile\", \"col\": 4}}]",
+ "creation": "2025-02-02 12:00:00",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "hide_custom": 0,
+ "icon": "tool",
+ "idx": 0,
+ "indicator_color": "blue",
+ "is_hidden": 0,
+ "label": "Solede Setup",
+ "links": [],
+ "modified": "2026-02-02 12:49:03.085214",
+ "modified_by": "Administrator",
+ "module": "Solede Setup",
+ "name": "Solede Setup",
+ "number_cards": [],
+ "owner": "Administrator",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 25.0,
+ "shortcuts": [
+  {
+   "color": "Blue",
+   "doc_view": "",
+   "label": "Setup Profile",
+   "link_to": "Setup Profile",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "",
+   "label": "Cost Center Importer",
+   "link_to": "Cost Center Importer",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "",
+   "label": "Item Group Importer",
+   "link_to": "Item Group Importer",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "",
+   "label": "Warehouse Importer",
+   "link_to": "Warehouse Importer",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "",
+   "label": "Territory Importer",
+   "link_to": "Territory Importer",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "",
+   "label": "Customer Group Importer",
+   "link_to": "Customer Group Importer",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "",
+   "label": "Supplier Group Importer",
+   "link_to": "Supplier Group Importer",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "",
+   "label": "Mode of Payment Importer",
+   "link_to": "Mode of Payment Importer",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "",
+   "label": "Payment Terms Importer",
+   "link_to": "Payment Terms Importer",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "",
+   "label": "Chart of Accounts Importer",
+   "link_to": "Chart of Accounts Importer",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "",
+   "label": "Tax Template Importer",
+   "link_to": "Tax Template Importer",
+   "type": "DocType"
+  }
+ ],
+ "title": "Solede Setup"
+}

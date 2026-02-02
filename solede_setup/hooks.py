@@ -8,7 +8,7 @@ app_license = "agpl-3.0"
 # Apps
 # ------------------
 
-# required_apps = []
+required_apps = ["erpnext"]
 
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
@@ -26,7 +26,10 @@ app_license = "agpl-3.0"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/solede_setup/css/solede_setup.css"
-# app_include_js = "/assets/solede_setup/js/solede_setup.js"
+app_include_js = [
+    "/assets/solede_setup/js/setup_wizard.js",
+    "/assets/solede_setup/js/importer_utils.js",
+]
 
 # include js, css files in header of web template
 # web_include_css = "/assets/solede_setup/css/solede_setup.css"
@@ -83,7 +86,24 @@ app_license = "agpl-3.0"
 # ------------
 
 # before_install = "solede_setup.install.before_install"
-# after_install = "solede_setup.install.after_install"
+after_install = "solede_setup.install.after_install"
+
+# ============================================================================
+# SOLEDE SETUP - INTERCEPT HOOKS
+# ============================================================================
+
+# Setup Wizard Hooks
+# ------------------
+# Aggiunge stage custom al wizard e intercetta il completamento
+
+# JavaScript iniettato nel Setup Wizard (mostra avvisi se profilo attivo)
+setup_wizard_requires = "assets/solede_setup/js/setup_wizard.js"
+
+# Stage custom all'inizio del wizard (abilita tracking)
+setup_wizard_stages = "solede_setup.setup.intercept.before_wizard_stage"
+
+# Eseguito DOPO che tutti gli stage sono completati
+setup_wizard_complete = "solede_setup.setup.intercept.post_wizard_cleanup"
 
 # Uninstallation
 # ------------
@@ -129,21 +149,91 @@ app_license = "agpl-3.0"
 # ---------------
 # Override standard doctype classes
 
-# override_doctype_class = {
-# 	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+override_doctype_class = {
+    "Company": "solede_setup.overrides.company.CustomCompany",
+    "Cost Center": "solede_setup.overrides.cost_center.CustomCostCenter",
+}
+
+# Fixtures
+# --------
+# Custom fields per supportare custom_id negli importer
+
+fixtures = [
+    {
+        "dt": "Custom Field",
+        "filters": [["module", "=", "Solede Setup"]]
+    }
+]
 
 # Document Events
 # ---------------
 # Hook on document methods and events
+# Intercetta creazione di documenti durante il setup per tracciamento
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+    # Company - punto critico dove ERPNext crea molti dati automatici
+    "Company": {
+        "after_insert": "solede_setup.setup.intercept.on_company_after_insert",
+        "on_update": "solede_setup.setup.intercept.on_company_on_update",
+    },
+    # Accounting
+    "Account": {
+        "after_insert": "solede_setup.setup.intercept.on_account_after_insert",
+    },
+    "Cost Center": {
+        "after_insert": "solede_setup.setup.intercept.on_cost_center_after_insert",
+    },
+    # Stock
+    "Warehouse": {
+        "after_insert": "solede_setup.setup.intercept.on_warehouse_after_insert",
+    },
+    "Item Group": {
+        "after_insert": "solede_setup.setup.intercept.on_item_group_after_insert",
+    },
+    "Stock Entry Type": {
+        "after_insert": "solede_setup.setup.intercept.on_stock_entry_type_after_insert",
+    },
+    "UOM": {
+        "after_insert": "solede_setup.setup.intercept.on_uom_after_insert",
+    },
+    # HR
+    "Department": {
+        "after_insert": "solede_setup.setup.intercept.on_department_after_insert",
+    },
+    # CRM/Selling/Buying
+    "Territory": {
+        "after_insert": "solede_setup.setup.intercept.on_territory_after_insert",
+    },
+    "Customer Group": {
+        "after_insert": "solede_setup.setup.intercept.on_customer_group_after_insert",
+    },
+    "Supplier Group": {
+        "after_insert": "solede_setup.setup.intercept.on_supplier_group_after_insert",
+    },
+    # Taxes
+    "Sales Taxes and Charges Template": {
+        "after_insert": "solede_setup.setup.intercept.on_sales_tax_template_after_insert",
+    },
+    "Purchase Taxes and Charges Template": {
+        "after_insert": "solede_setup.setup.intercept.on_purchase_tax_template_after_insert",
+    },
+    "Item Tax Template": {
+        "after_insert": "solede_setup.setup.intercept.on_item_tax_template_after_insert",
+    },
+    # Payment
+    "Mode of Payment": {
+        "after_insert": "solede_setup.setup.intercept.on_mode_of_payment_after_insert",
+    },
+    "Price List": {
+        "after_insert": "solede_setup.setup.intercept.on_price_list_after_insert",
+    },
+    "Payment Term": {
+        "after_insert": "solede_setup.setup.intercept.on_payment_term_after_insert",
+    },
+    "Payment Terms Template": {
+        "after_insert": "solede_setup.setup.intercept.on_payment_terms_template_after_insert",
+    },
+}
 
 # Scheduled Tasks
 # ---------------
