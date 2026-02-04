@@ -153,6 +153,7 @@ override_doctype_class = {
     "Company": "solede_setup.overrides.company.CustomCompany",
     "Cost Center": "solede_setup.overrides.cost_center.CustomCostCenter",
     "Warehouse": "solede_setup.overrides.warehouse.CustomWarehouse",
+    "Item Group": "solede_setup.overrides.item_group.CustomItemGroup",
 }
 
 # Fixtures
@@ -162,6 +163,10 @@ override_doctype_class = {
 fixtures = [
     {
         "dt": "Custom Field",
+        "filters": [["module", "=", "Solede Setup"]]
+    },
+    {
+        "dt": "Property Setter",
         "filters": [["module", "=", "Solede Setup"]]
     },
     {

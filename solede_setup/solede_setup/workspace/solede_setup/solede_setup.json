@@ -1,7 +1,7 @@
 {
  "charts": [],
  "content": "[{\"id\":\"header_main\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Solede Setup</b></span>\",\"col\":12}},{\"id\":\"header_tree\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h5\\\"><b>Tree Importers</b></span>\",\"col\":12}},{\"id\":\"shortcut_cc\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Cost Center Importer\",\"col\":4}},{\"id\":\"shortcut_ig\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Item Group Importer\",\"col\":4}},{\"id\":\"shortcut_wh\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Warehouse Importer\",\"col\":4}},{\"id\":\"shortcut_ter\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Territory Importer\",\"col\":4}},{\"id\":\"shortcut_cg\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Customer Group Importer\",\"col\":4}},{\"id\":\"shortcut_sg\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Supplier Group Importer\",\"col\":4}},{\"id\":\"shortcut_coa\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chart of Accounts Importer\",\"col\":4}},{\"id\":\"header_list\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h5\\\"><b>List Importers</b></span>\",\"col\":12}},{\"id\":\"shortcut_mop\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Mode of Payment Importer\",\"col\":4}},{\"id\":\"shortcut_pt\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Payment Terms Importer\",\"col\":4}},{\"id\":\"shortcut_tt\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tax Template Importer\",\"col\":4}},{\"id\":\"kEfGNgFgnN\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Country Renamer\",\"col\":3}},{\"id\":\"SZ3w-PR_sz\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Country Importer\",\"col\":3}},{\"id\":\"header_config\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h5\\\"><b>Configuration</b></span>\",\"col\":12}},{\"id\":\"shortcut_profile\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Setup Profile\",\"col\":4}}]",
- "creation": "2026-02-04 12:09:12.970277",
+ "creation": "2026-02-04 17:14:20.921102",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
@@ -12,7 +12,7 @@
  "is_hidden": 0,
  "label": "Solede Setup",
  "links": [],
- "modified": "2026-02-04 12:10:20.939430",
+ "modified": "2026-02-04 17:20:52.630708",
  "modified_by": "Administrator",
  "module": "Solede Setup",
  "name": "Solede Setup",

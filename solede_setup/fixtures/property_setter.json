@@ -1,0 +1,22 @@
+[
+ {
+  "name": "Item Group-main-title_field",
+  "doctype": "Property Setter",
+  "doc_type": "Item Group",
+  "module": "Solede Setup",
+  "property": "title_field",
+  "property_type": "Data",
+  "value": "item_group_name",
+  "doctype_or_field": "DocType"
+ },
+ {
+  "name": "Item Group-main-autoname",
+  "doctype": "Property Setter",
+  "doc_type": "Item Group",
+  "module": "Solede Setup",
+  "property": "autoname",
+  "property_type": "Data",
+  "value": "",
+  "doctype_or_field": "DocType"
+ }
+]
