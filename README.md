@@ -103,10 +103,10 @@ bench --site your-site.local clear-cache
 2. Click **Download Template** to get a sample template
 3. Fill in the template:
 
-| Payment Terms Name | Description | Due Days | Discount % | Discount Days |
-|-------------------|-------------|----------|------------|---------------|
-| Net 30 | Payment due in 30 days | 30 | 0 | 0 |
-| 2/10 Net 30 | 2% discount if paid in 10 days | 30 | 2 | 10 |
+| Payment Term Name | Description | Due Date Based On | Credit Days | Credit Months | Invoice Portion |
+|-------------------|-------------|-------------------|-------------|---------------|-----------------|
+| Net 30 | Payment due in 30 days | Day(s) after invoice date | 30 | 0 | 100 |
+| Net 60 | Payment due in 60 days | Day(s) after invoice date | 60 | 0 | 100 |
 
 4. Upload and click **Import**
 
@@ -211,11 +211,12 @@ After the wizard completes:
 ### Payment Terms Template
 | Column | Description |
 |--------|-------------|
-| Payment Terms Name | Unique name |
+| Payment Term Name | Unique name |
 | Description | Description text |
-| Due Days | Number of days until due |
-| Discount % | Early payment discount percentage |
-| Discount Days | Days to qualify for discount |
+| Due Date Based On | Day(s) after invoice date, Day(s) after the end of the invoice month, or Month(s) after the end of the invoice month |
+| Credit Days | Number of days |
+| Credit Months | Number of months |
+| Invoice Portion | Percentage (0-100), default 100 |
 
 ## Important Notes
 

@@ -67,6 +67,7 @@ var generate_preview = function (frm) {
 							<th>${__("Description")}</th>
 							<th>${__("Due Date Based On")}</th>
 							<th>${__("Credit Days")}</th>
+							<th>${__("Credit Months")}</th>
 							<th>${__("Invoice Portion %")}</th>
 						</tr>
 					</thead>
@@ -78,6 +79,7 @@ var generate_preview = function (frm) {
 						<td>${row.description || ""}</td>
 						<td>${row.due_date_based_on}</td>
 						<td>${row.credit_days}</td>
+						<td>${row.credit_months}</td>
 						<td>${row.invoice_portion}%</td>
 					</tr>`;
 				});
