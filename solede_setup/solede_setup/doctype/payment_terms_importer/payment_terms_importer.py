@@ -130,3 +130,62 @@ def download_template(file_type: str):
 
     writer = generate_csv_template(COLUMNS, sample_rows)
     download_template_response(writer, file_type, "Payment Terms Importer")
+
+
+@frappe.whitelist()
+def create_templates_from_terms() -> dict:
+    """
+    Create Payment Terms Templates from existing Payment Terms (1 to 1).
+    For each Payment Term, creates a Payment Terms Template with the same name
+    and a single row referencing that Payment Term.
+    """
+    # Delete existing Payment Terms Templates
+    existing_templates = frappe.get_all("Payment Terms Template", pluck="name")
+    for name in existing_templates:
+        frappe.delete_doc("Payment Terms Template", name, ignore_permissions=True, force=True)
+
+    # Get all Payment Terms
+    payment_terms = frappe.get_all(
+        "Payment Term",
+        fields=["name", "payment_term_name", "description", "invoice_portion",
+                "due_date_based_on", "credit_days", "credit_months"]
+    )
+
+    if not payment_terms:
+        frappe.throw(_("No Payment Terms found. Import Payment Terms first."))
+
+    created = 0
+    for term in payment_terms:
+        template = frappe.new_doc("Payment Terms Template")
+        template.template_name = term.payment_term_name
+
+        # Add single row to child table
+        template.append("terms", {
+            "payment_term": term.name,
+            "description": term.description,
+            "invoice_portion": term.invoice_portion or 100,
+            "due_date_based_on": term.due_date_based_on,
+            "credit_days": term.credit_days or 0,
+            "credit_months": term.credit_months or 0,
+        })
+
+        template.flags.ignore_mandatory = True
+        template.insert(ignore_permissions=True)
+        created += 1
+
+    frappe.db.commit()
+
+    return {
+        "success": True,
+        "message": _("{0} Payment Terms Templates created").format(created),
+        "created": created
+    }
+
+
+@frappe.whitelist()
+def get_templates_count() -> dict:
+    """Count existing Payment Terms Templates."""
+    return {
+        "count": count_existing_data("Payment Terms Template"),
+        "doctype": "Payment Terms Template"
+    }

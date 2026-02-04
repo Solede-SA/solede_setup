@@ -17,6 +17,11 @@ frappe.ui.form.on("Payment Terms Importer", {
 			message: "There are {0} existing Payment Terms that will be deleted on import.",
 		});
 
+		// Add button to create Payment Terms Templates
+		frm.add_custom_button(__("Create Templates from Terms"), function () {
+			create_templates_from_terms(frm);
+		});
+
 		if (frm.doc.import_file) {
 			frappe.run_serially([
 				() => generate_preview(frm),
@@ -87,6 +92,58 @@ var generate_preview = function (frm) {
 				html += `</tbody></table>`;
 				$(frm.fields_dict["preview_html"].wrapper).html(html);
 			}
+		},
+	});
+};
+
+var create_templates_from_terms = function (frm) {
+	// First get the counts
+	frappe.call({
+		method: `${MODULE_PATH}.get_existing_count`,
+		callback: function (terms_r) {
+			frappe.call({
+				method: `${MODULE_PATH}.get_templates_count`,
+				callback: function (templates_r) {
+					let terms_count = terms_r.message?.count || 0;
+					let templates_count = templates_r.message?.count || 0;
+
+					if (terms_count === 0) {
+						frappe.msgprint(__("No Payment Terms found. Import Payment Terms first."));
+						return;
+					}
+
+					let warning = "";
+					if (templates_count > 0) {
+						warning = `<p><b>${__("Warning:")}</b> ${__(
+							"{0} existing Payment Terms Templates will be deleted.",
+							[templates_count]
+						)}</p>`;
+					}
+
+					frappe.confirm(
+						`${warning}<p>${__(
+							"This will create {0} Payment Terms Templates (one for each Payment Term). Continue?",
+							[terms_count]
+						)}</p>`,
+						function () {
+							frappe.call({
+								method: `${MODULE_PATH}.create_templates_from_terms`,
+								freeze: true,
+								freeze_message: __("Creating Payment Terms Templates..."),
+								callback: function (r) {
+									if (r.message && r.message.success) {
+										frappe.show_alert({
+											message: r.message.message,
+											indicator: "green",
+										});
+										frm.reload_doc();
+									}
+								},
+							});
+						}
+					);
+				},
+			});
 		},
 	});
 };
