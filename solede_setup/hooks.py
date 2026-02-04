@@ -163,6 +163,10 @@ fixtures = [
     {
         "dt": "Custom Field",
         "filters": [["module", "=", "Solede Setup"]]
+    },
+    {
+        "dt": "Workspace",
+        "filters": [["module", "=", "Solede Setup"]]
     }
 ]
 

@@ -1,0 +1,69 @@
+{
+ "actions": [],
+ "allow_copy": 1,
+ "creation": "2025-02-04 12:00:00",
+ "description": "Delete all countries and import from CSV/Excel file",
+ "doctype": "DocType",
+ "document_type": "Other",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "download_template",
+  "import_file_section",
+  "import_file",
+  "preview_section",
+  "preview_html"
+ ],
+ "fields": [
+  {
+   "fieldname": "download_template",
+   "fieldtype": "Button",
+   "label": "Download Template"
+  },
+  {
+   "fieldname": "import_file_section",
+   "fieldtype": "Section Break",
+   "label": "Import File"
+  },
+  {
+   "fieldname": "import_file",
+   "fieldtype": "Attach",
+   "label": "Attach Country Import file"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "preview_section",
+   "fieldtype": "Section Break",
+   "label": "Preview"
+  },
+  {
+   "fieldname": "preview_html",
+   "fieldtype": "HTML",
+   "label": "Preview"
+  }
+ ],
+ "hide_toolbar": 1,
+ "in_create": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2025-02-04 12:00:00",
+ "modified_by": "Administrator",
+ "module": "Solede Setup",
+ "name": "Country Importer",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "read_only": 1,
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
