@@ -66,6 +66,14 @@ class SetupProfile(Document):
             "country_fixtures": self.skip_country_fixtures,
         }
 
+    def get_custom_templates(self) -> dict:
+        """
+        Ritorna dizionario con path ai template custom.
+        TODO: Implementare campi per custom templates nel DocType.
+        Per ora ritorna dizionario vuoto.
+        """
+        return {}
+
 
 def get_active_profile() -> "SetupProfile | None":
     """Helper function per recuperare il profilo attivo."""
